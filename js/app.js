@@ -9,11 +9,18 @@ class Tamagotchi {
         this.boredom = 1;
     }
 }
+//variables to work with
+const buttonConsole = document.querySelector('#btnContainer');
+const startButton = document.querySelector('#start');
+const feedButton = document.querySelector('#feed');
+const playButton = document.querySelector('#play');
+const sleepButton = document.querySelector('#sleep');
 
+//game object
 const game = {
     timer: 0,
     startGame()  {
-        //stuff to do when game starts
+        console.log('start game');
     },
     startTimer()  {
         //begin the timer
@@ -23,16 +30,33 @@ const game = {
         //check for conditions that kill tamagotchi
     },
     feedTama()  {
-        //things to do when you feed Tama
+        console.log('Give Tama some food');
     },
     playWithTama()  {
-        //things to do when playing with Tama
+        console.log('Play with Tama');
     },
     putTamaToBed()  {
-
+        console.log('Time for bed');
     }
 
 }
+
+//adding event listener to buttonConsole
+
+buttonConsole.addEventListener('click', function(e)  {
+    if (e.target === startButton)  {
+        game.startGame();
+    }
+    else if (e.target === feedButton)  {
+        game.feedTama();
+    }
+    else if (e.target === playButton)  {
+        game.playWithTama();
+    }
+    else if (e.target === sleepButton)  {
+        game.putTamaToBed();
+    }
+})
 
 
 

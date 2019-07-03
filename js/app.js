@@ -29,7 +29,13 @@ const game = {
         this.updateStats();
     },
     startTimer()  {
-        //begin the timer
+        const timer = setInterval(() => {
+        this.timer ++;
+        if (this.timer % 10 == 0)  {
+            this.tamaArray[0].age++;
+        }
+        this.updateStats();
+        }, 1000);
         //age tamagotchi and starts incrementing the other stuff
     },
     updateStats()  {

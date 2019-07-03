@@ -15,10 +15,12 @@ const startButton = document.querySelector('#start');
 const feedButton = document.querySelector('#feed');
 const playButton = document.querySelector('#play');
 const sleepButton = document.querySelector('#sleep');
+const pauseButton = document.querySelector('#pause');
 const stats = document.querySelector('#stats');
 
 //game object
 const game = {
+    paused: false,
     timer: 0,
     tamaArray: [],
     startGame()  {
@@ -29,14 +31,23 @@ const game = {
         this.updateStats();
     },
     startTimer()  {
+        this.paused = false;
         const timer = setInterval(() => {
         this.timer ++;
         if (this.timer % 10 == 0)  {
             this.tamaArray[0].age++;
         }
+        if (this.paused == true)  {
+            clearInterval(timer);
+        }
         this.updateStats();
         }, 1000);
         //age tamagotchi and starts incrementing the other stuff
+    },
+    pauseTimer()  {
+        this.paused = true;
+        console.log('pause');
+        console.log(this);
     },
     updateStats()  {
         stats.innerText = `Timer: ${game.timer} Age: ${this.tamaArray[0].age} Hunger: ${this.tamaArray[0].hunger} Sleepy: ${this.tamaArray[0].sleepy} Boredom: ${this.tamaArray[0].boredom}`;
@@ -61,6 +72,9 @@ const game = {
 buttonConsole.addEventListener('click', e =>  {
     if (e.target === startButton)  {
         game.startGame();
+    }
+    else if (e.target === pauseButton)  {
+        game.pauseTimer();
     }
     else if (e.target === feedButton)  {
         game.feedTama();

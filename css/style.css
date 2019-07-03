@@ -3,13 +3,16 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+#flex-container {
+    display: flex;
+    justify-content: space-between;
+}
 button {
-    display: inline-block;
+    display: block;
     margin: 3px;
     font-weight: 400;
     text-align: center;
     white-space: nowrap;
-    vertical-align: middle;
     cursor: pointer;
     background-image: none;
     border: 1px solid transparent;
@@ -22,16 +25,14 @@ button:hover {
     background-color: orange;
 }
 aside {
-    float: right;
-    position: fixed;
-    top: 0;
-    right: 0;
     background-color: beige;
 }
 #tama-lair {
     border: 1px pink solid;
     height: 100px;
     width: 100px;
+    margin-top: 40%;
+    align-self: flex-end;
     
 }
 #btnContainer {

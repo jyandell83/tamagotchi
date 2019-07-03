@@ -1,13 +1,40 @@
+body {
+    background: url(https://i.imgur.com/g5H9Lrm.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 button {
-    display: block;
+    display: inline-block;
+    margin: 3px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: orange;
 }
 aside {
     float: right;
     position: fixed;
     top: 0;
     right: 0;
+    background-color: beige;
+}
+#tama-lair {
+    border: 1px pink solid;
+    height: 100px;
+    width: 100px;
+    
 }
 #btnContainer {
-    border: 1px black solid;
-    width: 100px;
+    border: 1px pink solid;
+    width: 120px;
 }

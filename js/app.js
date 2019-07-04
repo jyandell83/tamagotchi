@@ -4,9 +4,9 @@ class Tamagotchi {
     constructor(name){
         this.name = name;
         this.age = 0;
-        this.hunger = 1;
-        this.sleepy = 1;
-        this.boredom = 1;
+        this.hunger = 10;
+        this.sleepy = 10;
+        this.boredom = 10;
     }
 }
 //variables to work with
@@ -30,6 +30,7 @@ const game = {
         const tama = new Tamagotchi('buddyboy');
         game.tamaArray.push(tama);
         this.startTimer();
+        this.makeStats();
         this.updateStats();
         this.updateImg();
     },
@@ -40,14 +41,18 @@ const game = {
         if (this.timer % 10 == 0)  {
             this.tamaArray[0].age++;
         }
+        if (this.timer === 15)  {
+
+            document.querySelector('.yoshi').setAttribute('class', 'shake');
+        }
         if (this.timer === 30) {
             this.currentImg = "https://i.imgur.com/CNZisda.png?1";
             this.updateImg();
         }
         if (this.timer % 15 == 0)  {
-            this.tamaArray[0].hunger ++;
-            this.tamaArray[0].sleepy ++;
-            this.tamaArray[0].boredom ++;
+            this.tamaArray[0].hunger --;
+            this.tamaArray[0].sleepy --;
+            this.tamaArray[0].boredom --;
         }
         if (this.paused == true)  {
             clearInterval(timer);
@@ -61,12 +66,41 @@ const game = {
         console.log('pause');
         console.log(this);
     },
-    updateStats()  {
-        stats.innerText = `Timer: ${game.timer} Age: ${this.tamaArray[0].age} Hunger: ${this.tamaArray[0].hunger} Sleepy: ${this.tamaArray[0].sleepy} Boredom: ${this.tamaArray[0].boredom}`;
+    makeStats()  {
+        const ageDiv = document.createElement('div');
+        ageDiv.setAttribute('id', 'age-stat');
+        const hungerDiv = document.createElement('div');
+        hungerDiv.setAttribute('id', 'hunger-stat');
+        const sleepyDiv = document.createElement('div');
+        sleepyDiv.setAttribute('id', 'sleep-stat');
+        const boredDiv = document.createElement('div');
+        boredDiv.setAttribute('id', 'bored-stat');
+        stats.append(ageDiv);
+        stats.append(hungerDiv);
+        stats.append(sleepyDiv);
+        stats.append(boredDiv);
+
     },
+    //this isnt working right now, trying to make hearts for the life
+    makeHearts(num)  {
+        const heartsArray = [];
+        const span = document.createElement('span');
+        for (let i = 1; i <= num; i++)  {
+            heartsArray.push('&#x2665;');
+        }
+        const hearts = heartsArray.join();
+        console.log(hearts);
+    },
+    updateStats()  {
+        document.querySelector('#age-stat').innerText = `Age: ${this.tamaArray[0].age}`;
+        document.querySelector('#hunger-stat').innerText = `Hunger: ${this.tamaArray[0].hunger}`;
+        document.querySelector('#sleep-stat').innerText = `Sleepy: ${this.tamaArray[0].sleepy}`;
+        document.querySelector('#bored-stat').innerText = `Boredom: ${this.tamaArray[0].boredom}`;
+        },
     updateImg()  {
         const img = document.createElement('img');
         img.setAttribute('src', this.currentImg);
+        img.setAttribute('class', 'yoshi');
         while (lair.firstChild) {
             lair.removeChild(lair.firstChild);
         }

@@ -81,7 +81,7 @@ const game = {
         stats.append(boredDiv);
 
     },
-    //this isnt working right now, trying to make hearts for the life
+    /*this isnt working right now, trying to make hearts for the life
     makeHearts(num)  {
         const heartsArray = [];
         const span = document.createElement('span');
@@ -90,13 +90,13 @@ const game = {
         }
         const hearts = heartsArray.join();
         console.log(hearts);
-    },
+    },*/
     updateStats()  {
         document.querySelector('#age-stat').innerText = `Age: ${this.tamaArray[0].age}`;
         document.querySelector('#hunger-stat').innerText = `Hunger: ${this.tamaArray[0].hunger}`;
         document.querySelector('#sleep-stat').innerText = `Sleepy: ${this.tamaArray[0].sleepy}`;
         document.querySelector('#bored-stat').innerText = `Boredom: ${this.tamaArray[0].boredom}`;
-        },
+    },
     updateImg()  {
         const img = document.createElement('img');
         img.setAttribute('src', this.currentImg);
@@ -111,15 +111,15 @@ const game = {
     },
     feedTama()  {
         console.log('Give Tama some food');
-        this.tamaArray[0].hunger --;
+        this.tamaArray[0].hunger ++;
     },
     playWithTama()  {
         console.log('Play with Tama');
-        this.tamaArray[0].boredom --;
+        this.tamaArray[0].boredom ++;
     },
     putTamaToBed()  {
         console.log('Time for bed');
-        this.tamaArray[0].sleepy --;
+        this.tamaArray[0].sleepy ++;
     }
 
 }

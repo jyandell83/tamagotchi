@@ -4,9 +4,9 @@ class Tamagotchi {
     constructor(name){
         this.name = name;
         this.age = 0;
-        this.hunger = 10;
-        this.sleepy = 10;
-        this.boredom = 10;
+        this.hunger = 1;
+        this.sleepy = 1;
+        this.boredom = 1;
     }
 }
 //variables to work with
@@ -50,9 +50,9 @@ const game = {
             this.updateImg();
         }
         if (this.timer % 15 == 0)  {
-            this.tamaArray[0].hunger --;
-            this.tamaArray[0].sleepy --;
-            this.tamaArray[0].boredom --;
+            this.tamaArray[0].hunger ++;
+            this.tamaArray[0].sleepy ++;
+            this.tamaArray[0].boredom ++;
         }
         if (this.paused == true)  {
             clearInterval(timer);
@@ -111,15 +111,18 @@ const game = {
     },
     feedTama()  {
         console.log('Give Tama some food');
-        this.tamaArray[0].hunger ++;
+        this.tamaArray[0].hunger --;
     },
     playWithTama()  {
         console.log('Play with Tama');
-        this.tamaArray[0].boredom ++;
+        const img = document.querySelector('.yoshi');
+        img.setAttribute('class', 'jump');
+        setTimeout(function(){ img.setAttribute('class', 'yoshi'); }, 3000);
+        this.tamaArray[0].boredom --;
     },
     putTamaToBed()  {
         console.log('Time for bed');
-        this.tamaArray[0].sleepy ++;
+        this.tamaArray[0].sleepy --;
     }
 
 }

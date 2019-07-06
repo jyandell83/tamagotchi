@@ -26,8 +26,8 @@ const game = {
     tamaArray: [],
     currentImg: "https://i.imgur.com/5gPZZ2z.png?1",
     startGame()  {
-        console.log('start game');
-        const tama = new Tamagotchi('buddyboy');
+        const userName = prompt('Pick a name for your Tamagotchi.')
+        const tama = new Tamagotchi(userName);
         game.tamaArray.push(tama);
         this.startTimer();
         this.makeStats();
@@ -68,6 +68,8 @@ const game = {
         console.log(this);
     },
     makeStats()  {
+        const nameDiv = document.createElement('div');
+        nameDiv.setAttribute('id', 'name-stat');
         const ageDiv = document.createElement('div');
         ageDiv.setAttribute('id', 'age-stat');
         const hungerDiv = document.createElement('div');
@@ -76,6 +78,7 @@ const game = {
         sleepyDiv.setAttribute('id', 'sleep-stat');
         const boredDiv = document.createElement('div');
         boredDiv.setAttribute('id', 'bored-stat');
+        stats.append(nameDiv);
         stats.append(ageDiv);
         stats.append(hungerDiv);
         stats.append(sleepyDiv);
@@ -93,6 +96,7 @@ const game = {
         console.log(hearts);
     },*/
     updateStats()  {
+        document.querySelector('#name-stat').innerText = `Name: ${this.tamaArray[0].name}`;
         document.querySelector('#age-stat').innerText = `Age: ${this.tamaArray[0].age}`;
         document.querySelector('#hunger-stat').innerText = `Hunger: ${this.tamaArray[0].hunger}`;
         document.querySelector('#sleep-stat').innerText = `Sleepy: ${this.tamaArray[0].sleepy}`;

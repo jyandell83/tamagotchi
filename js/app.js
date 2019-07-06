@@ -58,6 +58,7 @@ const game = {
             clearInterval(timer);
         }
         this.updateStats();
+        this.killTama();
         }, 1000);
         //age tamagotchi and starts incrementing the other stuff
     },
@@ -107,7 +108,10 @@ const game = {
         lair.appendChild(img);
     },
     killTama()  {
-        //check for conditions that kill tamagotchi
+        if (this.tamaArray[0].hunger == 10 || this.tamaArray[0].sleepy == 0 || this.tamaArray[0].boredom == 0) {
+            alert('GAME OVER!');
+            location.reload();
+        }
     },
     feedTama()  {
         console.log('Give Tama some food');

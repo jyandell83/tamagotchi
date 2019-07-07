@@ -25,8 +25,11 @@ button:hover {
     background-color: orange;
 }
 aside {
-    background-color: beige;
-    height: 150px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+aside div {
+  margin:20px;
 }
 .shake {
     animation: shake 0.5s; 

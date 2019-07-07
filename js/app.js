@@ -18,6 +18,7 @@ const sleepButton = document.querySelector('#sleep');
 const pauseButton = document.querySelector('#pause');
 const stats = document.querySelector('#stats');
 const lair = document.querySelector('#tama-lair');
+const nightlight = document.querySelector('#nightlight');
 
 //game object
 const game = {
@@ -113,7 +114,7 @@ const game = {
     },
     killTama()  {
         if (this.tamaArray[0].hunger == 10 || this.tamaArray[0].sleepy == 0 || this.tamaArray[0].boredom == 0) {
-            alert('GAME OVER!');
+            alert(`GAME OVER! ${this.tamaArray[0].name} has died!`);
             location.reload();
         }
     },

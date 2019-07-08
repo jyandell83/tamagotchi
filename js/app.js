@@ -60,8 +60,7 @@ const game = {
         }
         this.updateStats();
         this.killTama();
-        }, 1000);
-        //age tamagotchi and starts incrementing the other stuff
+        }, 500);
     },
     pauseTimer()  {
         this.paused = true;
@@ -114,8 +113,10 @@ const game = {
     },
     killTama()  {
         if (this.tamaArray[0].hunger == 10 || this.tamaArray[0].sleepy == 0 || this.tamaArray[0].boredom == 0) {
+            this.pauseTimer();
+            this.currentImg = "https://i.imgur.com/Yo4EDmK.png?2";
+            this.updateImg();
             alert(`GAME OVER! ${this.tamaArray[0].name} has died!`);
-            location.reload();
         }
     },
     feedTama()  {
